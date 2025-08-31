@@ -3,6 +3,10 @@
 
 This project fine-tunes Stable Diffusion 1.5 to produce spectrograms to produce 15 second novel audio clips using the Song Describer Dataset.
 
+## Input Dataset
+
+[Song Describer Dataset](https://github.com/mulab-mir/song-describer-dataset)
+
 ## Train Results
 
 |Spectral Entropy|
