@@ -1,7 +1,7 @@
 import os
 
 # Set this to your folder
-folder = r".\spectrograms\\20_song"
+folder = r"..\spectrograms\\20_song"
 
 # Get lists of .png and .pxp files, sorted by name
 png_files = sorted([f for f in os.listdir(folder) if f.lower().endswith('.png')])

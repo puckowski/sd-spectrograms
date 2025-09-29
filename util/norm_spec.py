@@ -76,10 +76,18 @@ with open(CSV_FILE, "r", newline="", encoding="utf-8") as f:
                 continue
 
             # Choose a stem that pairs files (png + txt). Use basename without extension.
-            stem = os.path.splitext(os.path.basename(rel_path))[0]
-            png_out = os.path.join(OUTPUT_FOLDER, f"{stem}.png")
-            txt_out = os.path.join(OUTPUT_FOLDER, f"{stem}.txt")
-            wav_out = os.path.join(OUTPUT_FOLDER, f"{stem}_norm.wav")  # optional
+            # --- Build a unique, safe stem from the CSV path (folder + filename, no ext) ---
+            # Use the ORIGINAL CSV path for naming (so we don't bake ".2min" into names).
+            csv_rel = (row["path"] or "").strip().replace("\\", "/")   # e.g., "34/1004034.mp3"
+            stem_no_ext = os.path.splitext(csv_rel)[0]                  # -> "34/1004034"
+
+            # Make filename-safe: replace "/" and any odd chars with "_"
+            safe_stem = "".join(ch if ch.isalnum() or ch in "._-" else "_" for ch in stem_no_ext)
+            safe_stem = safe_stem.replace("/", "_")                     # -> "34_1004034"
+
+            png_out = os.path.join(OUTPUT_FOLDER, f"{safe_stem}.png")
+            txt_out = os.path.join(OUTPUT_FOLDER, f"{safe_stem}.txt")
+            wav_out = os.path.join(OUTPUT_FOLDER, f"{safe_stem}_norm.wav")  # optional
 
             # Load audio window
             y, sr = librosa.load(audio_path, sr=SR, offset=OFFSET, duration=DURATION)
@@ -109,7 +117,7 @@ with open(CSV_FILE, "r", newline="", encoding="utf-8") as f:
             with open(txt_out, "w", encoding="utf-8") as tf:
                 tf.write(caption + "\n")
 
-            print(f"[ok] {stem} | LUFS_in={in_lufs:.2f} | gain_db={applied_gain_db:.2f} -> {png_out}")
+            print(f"[ok] {safe_stem} | LUFS_in={in_lufs:.2f} | gain_db={applied_gain_db:.2f} -> {png_out}")
 
         except Exception as e:
             print(f"[error row {i}] {e}")
