@@ -27,4 +27,6 @@ Use ```AdamW``` optimizer. Some optimizers do not support text encoder training.
 |Increase clip skip|Indeterminate|
 |Increase rank and alpha per Thinking Machines Lab recommendation|✅ Improved definition|
 |Shuffle captions|✅ Improved text encoder associations|
-
+|Increase batch size|❌ Weaker prompt adherence|
+|Increase dataset repeats|✅ Stronger prompt adherence|
+|Increase steps for higher rank|✅ Improved text encoder associations and visual quality|
