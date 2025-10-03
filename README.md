@@ -30,3 +30,7 @@ Use ```AdamW``` optimizer. Some optimizers do not support text encoder training.
 |Increase batch size|❌ Weaker prompt adherence|
 |Increase dataset repeats|✅ Stronger prompt adherence|
 |Increase steps for higher rank|✅ Improved text encoder associations and visual quality|
+
+Average Δ over 15 runs: 0.0197
+
+Cosine probe 0.39379143714904785 to 0.9031552672386169
