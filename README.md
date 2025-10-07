@@ -30,6 +30,8 @@ Use ```AdamW``` optimizer. Some optimizers do not support text encoder training.
 |Increase batch size|❌ Weaker prompt adherence|
 |Increase dataset repeats|✅ Stronger prompt adherence|
 |Increase steps for higher rank|✅ Improved text encoder associations and visual quality|
+|Increase rank and alpha even further|❌ Mode collapse|
+|Add small amount of noise|❌ Worse audio quality|
 
 Average Δ over 15 runs: 0.0197
 
