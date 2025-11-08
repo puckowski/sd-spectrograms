@@ -33,6 +33,8 @@ Use ```AdamW``` optimizer. Some optimizers do not support text encoder training.
 |Increase rank and alpha even further|❌ Mode collapse|
 |Add small amount of noise|❌ Worse audio quality|
 |Try Stable Diffusion XL 1.0 instead of 1.5|More visual details but similar audio quality; indeterminate|
+|Disable bucketing|Indeterminate|
+|SpecAugment some training images|Indeterminate|
 
 Average Δ over 15 runs: 0.0197
 
