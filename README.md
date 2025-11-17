@@ -1,5 +1,6 @@
+# MiniMIDI
 
-# Stable Diffusion 1.5 Fune-tuning for Spectrograms
+## Stable Diffusion 1.5 Fine-tuning for Spectrograms
 
 This Python project fine-tunes Stable Diffusion 1.5 and Stable Diffusion XL 1.0 to produce spectrograms to produce 15 second novel audio clips using the Song Describer Dataset.
 
@@ -15,7 +16,7 @@ This Python project fine-tunes Stable Diffusion 1.5 and Stable Diffusion XL 1.0 
 - LoRA fine-tune Stable Diffusion 1.5 and Stable Diffusion XL 1.0
 - Evaluate model quality
   - Test prompt adherence and text encoder associations
-  - Test diversity and check for model collapse
+  - Test diversity and check for mode collapse
   - Audio reconstruction tests with img2img
 
 Use ```AdamW``` optimizer. Some optimizers do not support text encoder training.
@@ -27,15 +28,16 @@ Use ```AdamW``` optimizer. Some optimizers do not support text encoder training.
 |Increase clip skip|Indeterminate|
 |Increase rank and alpha per Thinking Machines Lab recommendation|✅ Improved definition|
 |Shuffle captions|✅ Improved text encoder associations|
-|Increase batch size|❌ Weaker prompt adherence|
+|Increase batch size|✅ Prevent mode collapse while adhering to prompts|
 |Increase dataset repeats|✅ Stronger prompt adherence|
 |Increase steps for higher rank|✅ Improved text encoder associations and visual quality|
 |Increase rank and alpha even further|❌ Mode collapse|
 |Add small amount of noise|❌ Worse audio quality|
-|Try Stable Diffusion XL 1.0 instead of 1.5|More visual details but similar audio quality; indeterminate|
+|Try Stable Diffusion XL 1.0 instead of 1.5|More visual details but similar audio quality. Slower training and inference; indeterminate|
 |Disable bucketing|Indeterminate|
 |SpecAugment some training images|Indeterminate|
+|Limit dataset to instrumental songs|✅ Improved audio quality for instrumental clips|
 
-Average Δ over 15 runs: 0.0197
+Average Δ over 15 runs: 0.0161
 
-Cosine probe 0.39379143714904785 to 0.9031552672386169
+Cosine probe 0.5470948219299316 to 0.9323879480361938
