@@ -1,4 +1,4 @@
-# MiniMIDI
+# DiffusionMiniMIDI
 
 ## Stable Diffusion 1.5 Fine-tuning for Spectrograms
 
@@ -37,6 +37,7 @@ Use ```AdamW``` optimizer. Some optimizers do not support text encoder training.
 |Disable bucketing|Indeterminate|
 |SpecAugment some training images|Indeterminate|
 |Limit dataset to instrumental songs|✅ Improved audio quality for instrumental clips|
+|Add regularization images|✅ Improved inference variety and quality|
 
 Average Δ over 15 runs: 0.0161
 
