@@ -2,3 +2,6 @@ audio
 train.bat
 spectrograms
 requirements.txt
+instrumentals
+nspec.py
+collect.py

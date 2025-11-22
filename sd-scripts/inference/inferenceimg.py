@@ -31,10 +31,10 @@ try:
 except Exception:
     pass
 
-init_image = Image.open("../control/piano.png").convert("RGB")
+init_image = Image.open("../control/image531.png").convert("RGB")
 
 prompt = (
-    "This is an instrumental track based on electronic samples that can be used before the start of a movie to give a doomsday or post apocalypse feel mel spectrogram"
+    "Sad instrumental piano song that feels like is telling a story and that one can be put on in the background to listen while alone mel spectrogram"
 )
 
 negative_prompt = (
