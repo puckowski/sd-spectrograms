@@ -39,6 +39,7 @@ Use ```AdamW``` optimizer. Some optimizers do not support text encoder training.
 |Limit dataset to instrumental songs|✅ Improved audio quality for instrumental clips|
 |Add regularization images|✅ Improved inference variety and quality|
 |Train with Huber loss|✅ Improved inference detail|
+|Train with spectrogram-aware loss|Experimenting|
 |Resume training with different hyperparameters|Experimenting|
 
 Pixel RMSE diversity:
