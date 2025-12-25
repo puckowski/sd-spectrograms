@@ -53,12 +53,50 @@ Song Describer Dataset, and Suno captions to an extent, are a bit over-captioned
 Mean CLAP similarity: 0.3649
 Std  CLAP similarity: 0.0491
 
+|Value        |Interpreation                                                     |
+|:------------|:-----------------------------------------------------------------|
+|< 0.20       |poor / mostly off-prompt                                          |
+|0.20 – 0.30  | weak / inconsistent prompt adherence                             |
+|0.30 – 0.40  | decent / generally on-prompt                                     |
+|0.40 – 0.50  | strong / clearly on-prompt                                       |
+|> 0.50       | very strong (often easier prompts or highly constrained outputs) |
+
 === Embedding diversity (CLAP audio, ALL inputs/outputs) ===
 Generated diversity: {'cov_trace': 0.13633714922380508, 'mean_pairwise_cos_dist': 0.13633710145950317}
+
+|Value       |Interpretation               |
+|:-----------|:----------------------------|
+|< 0.05      |⚠️ Severe mode collapse      |
+|0.05–0.10   |Low diversity                |
+|0.10–0.18   |✅ Healthy diversity         |
+|0.18–0.30   |High diversity               |
+|> 0.30      |Very diverse / possibly noisy|
 
 === FAD (Fréchet Audio Distance, CLAP space; ALL inputs vs ALL outputs) ===
 FAD: 0.647253
 
+|FAD           |Interpretation                      |
+|:-------------|:-----------------------------------|
+|< 0.3         |Extremely close (often memorization)|
+|0.4–0.8       |✅ Good generalization              |
+|0.8–1.5       |Acceptable but weak                 |
+|> 2.0         |Poor / wrong domain                 |
+
 === Summary CLAP scoring of test set ===
 Files scored: 10
 Eval ↔ Ref audio embedding mean=0.3397 std=0.0953
+
+Eval ↔ Ref Interpretation
+
+high (≈ 0.30–0.45)
+- Generated audio belongs to the same semantic/audio manifold as real test data 
+- Model is generalizing, not memorizing
+- Instrument mixtures, texture, and density are plausible
+- No obvious mode collapse
+
+low (< 0.15)
+- Model outputs are noisy or incoherent
+- Wrong instrument family
+- Over-smoothed spectrograms
+- Severe mode collapse
+- Inversion artifacts dominating signal
