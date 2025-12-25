@@ -46,3 +46,19 @@ Song Describer Dataset, and Suno captions to an extent, are a bit over-captioned
 |Train with spectrogram-aware loss|❌ Dynamic Huber loss yielded better results|
 |Resume training with different hyperparameters|Experimenting|
 |Dynamic huber loss starting at 0.15 ending at 0.05|✅ Improved inference detail|
+
+## Evaluation
+
+=== CLAP text–audio similarity (single prompt, ALL outputs) ===
+Mean CLAP similarity: 0.3649
+Std  CLAP similarity: 0.0491
+
+=== Embedding diversity (CLAP audio, ALL inputs/outputs) ===
+Generated diversity: {'cov_trace': 0.13633714922380508, 'mean_pairwise_cos_dist': 0.13633710145950317}
+
+=== FAD (Fréchet Audio Distance, CLAP space; ALL inputs vs ALL outputs) ===
+FAD: 0.647253
+
+=== Summary CLAP scoring of test set ===
+Files scored: 10
+Eval ↔ Ref audio embedding mean=0.3397 std=0.0953
