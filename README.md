@@ -88,6 +88,19 @@ Eval ↔ Ref audio embedding mean=0.3397 std=0.0953
 
 Eval ↔ Ref Interpretation
 
+|CLAP cosine range      |	Interpretation  |
+|:----------------------|:----------------|
+|< 0.05                 | Broken / invalid|            
+|0.05 – 0.10            |	Very poor       |
+|0.10 – 0.15            |	Poor            |
+|0.15 – 0.20            | Borderline      |
+|0.20 – 0.25            |	Emerging        |
+|0.25 – 0.30            |	Acceptable      |
+|0.30 – 0.35            |	Good            |
+|0.35 – 0.45            |	Very good       |
+|0.45 – 0.55            |	Extremely close |
+|> 0.55	                |Suspicious       |
+
 high (≈ 0.30–0.45)
 - Generated audio belongs to the same semantic/audio manifold as real test data 
 - Model is generalizing, not memorizing
