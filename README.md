@@ -24,6 +24,12 @@ LoRA safetensors were fused into the base Stable Diffusion XL 1.0 model. There w
 
 Song Describer Dataset, and Suno captions to an extent, are a bit over-captioned for Stable Diffusion XL 1.0 fine-tuning. This was left as a possible weak supervision exercise to resolve in the future to potentially yield a better model. Additional datasets can be explored and more Suno generations can be used to augment training and test datasets for future models. Different base models may be explored. In the long run, I’d like to be able to have some WASM code run inference using my fine-tuned model to generate mel spectrograms entirely in a browser. Browser limitations will make that a challenge.
 
+## Additional Work 01/01/2026
+
+Distilling an 88 million parameter FP32 ONNX model for inference in the browser using WebGPU. Additional JavaScript
+will be used to convert browser inference mel spectrograms into playable audio which can also be downloaded as a .WAV file. The FP16 ONNX UNET suffered from numerical instanility so I am using a FP16 text encoder and a FP32 UNET
+with a FP32 VAE decoder. The ONNX UNET is small because on my system I am quickly hitting memory constraints.
+
 ## Hyperparameter Evaluations
 
 |Action|Result|
@@ -89,17 +95,17 @@ Eval ↔ Ref audio embedding mean=0.3397 std=0.0953
 Eval ↔ Ref Interpretation
 
 |CLAP cosine range      |	Interpretation  |
-|:----------------------|:----------------|
-|< 0.05                 | Broken / invalid|            
+|:----------------------|:------------------|
+|< 0.05                 | Broken / invalid  |            
 |0.05 – 0.10            |	Very poor       |
 |0.10 – 0.15            |	Poor            |
-|0.15 – 0.20            | Borderline      |
+|0.15 – 0.20            | Borderline        |
 |0.20 – 0.25            |	Emerging        |
 |0.25 – 0.30            |	Acceptable      |
 |0.30 – 0.35            |	Good            |
 |0.35 – 0.45            |	Very good       |
 |0.45 – 0.55            |	Extremely close |
-|> 0.55	                |Suspicious       |
+|> 0.55	                |Suspicious         |
 
 high (≈ 0.30–0.45)
 - Generated audio belongs to the same semantic/audio manifold as real test data 
