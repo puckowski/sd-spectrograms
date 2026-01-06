@@ -30,6 +30,10 @@ Distilling an 88 million parameter FP32 ONNX model for inference in the browser 
 will be used to convert browser inference mel spectrograms into playable audio which can also be downloaded as a .WAV file. The FP16 ONNX UNET suffered from numerical instanility so I am using a FP16 text encoder and a FP32 UNET
 with a FP32 VAE decoder. The ONNX UNET is small because on my system I am quickly hitting memory constraints.
 
+## Additional Work 01/06/2026
+
+Distilled CLIP ViT-bigG/14 to one fourth size and FP16 to save memory. Redistilled a FP32 ONNX UNet model with 165 million parameters (versus originl 88 million) so that text to image inference in the browser yields better detail. Resulting combination of models steers well and produces better quality than the 88 million parameter model. Audio quality is poor when compared to teacher model but, on my system, I am near memory limits and can no distill a larger model.
+
 ## Hyperparameter Evaluations
 
 |Action|Result|
