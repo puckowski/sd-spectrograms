@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>SDXL Mel Spectrogram → Audio</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 16px; }
+    .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 10px; }
+    button { padding: 8px 12px; }
+    .small { opacity: 0.8; font-size: 12px; }
+    .card { border: 1px solid #ddd; border-radius: 10px; padding: 12px; margin-top: 12px; }
+    label { white-space: nowrap; }
+    #audioControls { display: none; }
+  </style>
+</head>
+<body>
+  <h2>SDXL Mel Spectrogram Generator & Audio Converter</h2>
+
+  <div class="card">
+    <div>
+      <input id="prompt" style="width: 700px"
+             value="mel spectrogram violin-driven ballad with soft piano accompaniment, emotional, classical-inspired, violin" />
+      <button onclick="runDemo()">Generate</button>
+      <span id="status"></span>
+    </div>
+
+    <canvas id="out"></canvas>
+  </div>
+
+  <div id="audioControls" class="card">
+    <h3>Convert to Audio</h3>
+    <div class="row">
+      <button id="convertBtn">Convert Image to Audio</button>
+      <span id="audioStatus" class="small"></span>
+    </div>
+
+    <div class="row">
+      <label>SR <input id="sr" type="number" value="16000" /></label>
+      <label>N_MELS <input id="nmels" type="number" value="256" /></label>
+      <label>Duration (s) <input id="dur" type="number" value="16.27" step="0.01" /></label>
+      <label>n_fft <input id="nfft" type="number" value="2048" /></label>
+      <label>hop <input id="hop" type="number" value="512" /></label>
+      <label>GL iters <input id="iters" type="number" value="64" /></label>
+    </div>
+
+    <div class="row">
+      <label>DB_MIN <input id="dbmin" type="number" value="-80" step="0.1" /></label>
+      <label>DB_MAX <input id="dbmax" type="number" value="0" step="0.1" /></label>
+      <label>fmin (Hz) <input id="fmin" type="number" value="0" step="1" /></label>
+      <label>fmax (Hz) <input id="fmax" type="number" value="8000" step="1" /></label>
+      <label>Preemph <input id="preemph" type="number" value="0.97" step="0.01" /></label>
+      <label>Apply deemph <input id="deemph" type="checkbox" checked /></label>
+    </div>
+
+    <div class="row">
+      <label>Apply LUFS <input id="applyLufs" type="checkbox" checked /></label>
+      <label>Target LUFS <input id="targetLufs" type="number" value="-14" step="0.1" /></label>
+      <label>TP Limit (dB) <input id="tpLimitDb" type="number" value="-1" step="0.1" /></label>
+      <label>Oversample <input id="oversample" type="number" value="2" step="1" min="1" /></label>
+    </div>
+
+    <div id="audioOutput"></div>
+  </div>
+
+  <script type="module" src="/main.js"></script>
+  <script type="module" src="/melconverter.js"></script>
+</body>
+</html>
