@@ -34,6 +34,10 @@ with a FP32 VAE decoder. The ONNX UNET is small because on my system I am quickl
 
 Distilled CLIP ViT-bigG/14 to one fourth size and FP16 to save memory. Redistilled a FP32 ONNX UNet model with 165 million parameters (versus originl 88 million) so that text to image inference in the browser yields better detail. Resulting combination of models steers well and produces better quality than the 88 million parameter model. Audio quality is poor when compared to teacher model but, on my system, I am near memory limits and can no distill a larger model.
 
+## Additional Work 02/12/2026
+
+Distilled a new 1.32 GB ONNX FP32 UNet model on a small "lo-fi" and "retro synthwave" dataset generated using Sudo AI Music Generator. The resulting UNet model, along with a re-distilled one fourth size CLIP ViT-big6/14 Text Encoder-1 was able to load in browser tab memory and generate a mel spectrogram for a lo-fi prompt. The mel spectrogram was then converted to a WAV file in the browser and yielded acceptable audio quality for the model size.
+
 ## Hyperparameter Evaluations
 
 |Action|Result|
