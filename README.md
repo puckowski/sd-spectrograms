@@ -36,7 +36,7 @@ Distilled CLIP ViT-bigG/14 to one fourth size and FP16 to save memory. Redistill
 
 ## Additional Work 02/12/2026
 
-Distilled a new 1.32 GB ONNX FP32 UNet model on a small "lo-fi" and "retro synthwave" dataset generated using Sudo AI Music Generator. The resulting UNet model, along with a re-distilled one fourth size CLIP ViT-big6/14 Text Encoder-1 was able to load in browser tab memory and generate a mel spectrogram for a lo-fi prompt. The mel spectrogram was then converted to a WAV file in the browser and yielded acceptable audio quality for the model size.
+Distilled a new 1.32 GB ONNX FP32 UNet model on a small "lo-fi" and "retro synthwave" dataset generated using Sudo AI Music Generator. The UNet model is roughly 125 million parameters. The resulting UNet model, along with a re-distilled one fourth size CLIP ViT-big6/14 Text Encoder-1 was able to load in browser tab memory and generate a mel spectrogram for a lo-fi prompt. The Text Encoder-1 model is roughly 11.4 million parameters. The mel spectrogram was then converted to a WAV file in the browser and yielded acceptable audio quality for the model size. Working within memory constraints was challening as ONNX for WebGPU supports opset level 17.
 
 ## Hyperparameter Evaluations
 
